@@ -1,0 +1,38 @@
+{% extends 'frontend/base.html' %}
+
+{% block content %}
+<div class="categoria">
+
+    <div style="float:right;">
+        {% include "frontend/widget.html" %}
+
+    </div>
+    <!-- Iterar sobre cada categoría -->
+    {% for categoria in categorias %}
+    <div>
+        <h2>{{ categoria }}</h2>
+        <div class="productos">
+            <!-- Filtrar productos por la categoría actual -->
+            {% for producto in productos %}
+
+                {% if producto.categorias == categoria %}
+
+                <div class="card">
+                    <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ producto.nombre }}</h5>
+                        <p class="card-text">{{ producto.descripcion }}</p>
+                        <p class="card-text">Precio: ${{ producto.precio }}</p>
+                    </div>
+                    <div class="card-footer text-center">
+                        <a href="{% url 'carrito:agregar' producto.id %}" class="btn btn-sm btn-success">Agregar</a>
+
+                    </div>
+                </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

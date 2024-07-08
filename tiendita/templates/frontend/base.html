@@ -1,0 +1,58 @@
+
+{% load static %}
+
+<!DOCTYPE html>
+<!-- Se establece el idioma en español -->
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="script" href="validacion.js">
+    <link rel="stylesheet" href="{% static 'frontend/css/style.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+
+    <!-- El título de la página es Pantalonas -->
+    <title>Pantalonas</title>
+
+</head>
+<body>
+    <!-- Se crea el navbar -->
+    <nav class="navbar">
+       <a class="active" href="index.html">Pantalonas</a>
+            <div class="links-container">
+                <a  href="productos.html" class="link">Productos</a>
+                <a  href="contacto.html" class="link">Contacto</a>
+                <a  href="nosotros.html" class="link">Nosotros</a>
+                <a  href="carrito.html" class="link">Carrito</a>
+            </div>
+    </nav>
+    
+        {% block content %}
+        <!-- Este bloque será llenado por cada página específica que extienda base.html -->
+        {% endblock %}
+
+    <!-- Se crea el footer -->
+    
+    <footer>
+        <div class="footer">
+        <div class="redes"> 
+            <p> Síguenos</p>
+            <a href="https://open.spotify.com">
+                <img src="{% static 'frontend/img/spotify.png' %}" alt="Spotify" class="rrss"> 
+            </a>
+            <a href="https://www.pinterest.cl/">
+                <img src="{% static 'frontend/img/pinterest.png' %}" alt="Pinterest" class="rrss"> 
+            </a>
+        </div>
+        <div class="links-footer">
+            <a  href="#preguntas" class="linkf">Preguntas frequentes</a>
+            <a  href="#terminos" class="linkf">Términos y condiciones</a>
+            <a  href="#envío" class="linkf">Política de envío</a>
+        </div>
+    </div>
+    </footer>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+</body>
+</html>

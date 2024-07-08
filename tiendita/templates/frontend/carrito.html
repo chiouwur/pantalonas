@@ -1,0 +1,56 @@
+{% extends 'frontend/base.html' %}
+
+{% load static %}
+{% block content %}
+
+<div class="cuerpo">
+{% if request.session.carrito.items %}
+<div class="cuerpocarrito">
+  <div class="carrito">
+    {% for key, value in request.session.carrito.items %}
+    <div class="producto">
+      <div class="row">
+        <div class="col-md-4">
+          <img class= "img_carrito" src="{{ value.imagen_url }}" alt="{{ value.nombre }}">
+        </div>
+        <div class="col-md-8">
+          <h5>{{ value.nombre }}</h5>
+          <h5>{{ value.categoria }}</h5>
+          <div class="btn-group mr-2" role="group">
+            <a href="{% url 'carrito:agregar' value.producto_id %}" class="btn btn-sm btn-success">+</a>
+          </div>
+          <div class="btn-group mr-2" role="group">
+            <span class="btn btn-outline-secondary">{{ value.cantidad }}</span>
+          </div>
+          <div class="btn-group" role="group">
+            <a href="{% url 'carrito:restar' value.producto_id %}" class="btn btn-sm btn-primary">-</a>
+          </div>
+          <div class="btn-group" role="group">
+            <a href="{% url 'carrito:eliminar' value.producto_id %}" class="btn btn-sm btn-danger">Eliminar</a>
+          </div>
+          
+          <p class="mt-2"><strong>Total:</strong> {{importe_total_carrito }} CLP</p>
+
+        </div>
+      </div>
+    
+    </div>
+    <div class="pagar">
+        <button class="botonpagar">Ir a pagar</button>
+    </div>
+    
+    {% endfor %}
+  </div>
+</div>
+{% else %}
+
+<div class="cuerpocarrito">
+        <div class="producto">
+             <h1>Tu carrito está vacío.</h1>
+        </div>
+{% endif %}
+
+</div>
+</div>
+
+{% endblock %}
